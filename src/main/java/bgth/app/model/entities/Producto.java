@@ -14,6 +14,10 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String name;
+	private String description;
+	private Long price;
+	
 	public String getDescription() {
 		return description;
 	}
@@ -26,9 +30,6 @@ public class Producto {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
-	private String name;
-	private String description;
-	private Long price;
 	
 	public Long getId() {
 		return id;
