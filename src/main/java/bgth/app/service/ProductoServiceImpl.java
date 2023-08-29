@@ -40,4 +40,19 @@ public class ProductoServiceImpl implements IProductoService{
 		repository.deleteById(id);
 	}
 
+	@Override
+	@Transactional
+	public Optional<Producto> actualizar(Producto producto, Long id) {
+		Optional<Producto> o = this.buscarPorId(id);
+		Producto productoOPtional = null;
+		if (o.isPresent()) {
+			Producto productoDb = o.orElseThrow();
+			productoDb.setName(producto.getName());
+			productoDb.setDescription(producto.getDescription());
+			productoDb.setPrice(producto.getPrice());
+			productoOPtional = this.guardar(productoDb);
+		}
+		return Optional.ofNullable(productoOPtional);
+	}
+
 }
