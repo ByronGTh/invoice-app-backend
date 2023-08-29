@@ -10,5 +10,6 @@ public interface IProductoService {
 	List<Producto> mostrarRegistros();
 	Optional<Producto> buscarPorId(Long id);
 	Producto guardar(Producto producto);
+	Optional<Producto> actualizar(Producto producto, Long id);
 	void eliminar(Long id);
 }
