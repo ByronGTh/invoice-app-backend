@@ -48,11 +48,7 @@ public class ProductoController {
 	public ResponseEntity<?> update(@RequestBody Producto producto, @PathVariable Long id){
 		Optional<Producto> optional = service.buscarPorId(id);
 		if (optional.isPresent()) {
-			Producto productoDb = optional.orElseThrow();
-			productoDb.setName(producto.getName());
-			productoDb.setDescription(producto.getDescription());
-			productoDb.setPrice(producto.getPrice());
-			return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(productoDb));
+			return ResponseEntity.status(HttpStatus.CREATED).body(optional.orElseThrow());
 		}
 		return ResponseEntity.notFound().build();
 	}
