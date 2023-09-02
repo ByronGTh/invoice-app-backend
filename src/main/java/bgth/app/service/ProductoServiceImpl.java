@@ -47,9 +47,17 @@ public class ProductoServiceImpl implements IProductoService{
 		Producto productoOPtional = null;
 		if (o.isPresent()) {
 			Producto productoDb = o.orElseThrow();
-			productoDb.setName(producto.getName());
-			productoDb.setDescription(producto.getDescription());
-			productoDb.setPrice(producto.getPrice());
+			//TODO: Validar que solo realice cambios a los campos que vienen con informacion ya que los demas los pone como null
+			if (producto.getName() != null) {
+				productoDb.setName(producto.getName());
+			}
+			if (producto.getDescription() != null) {
+				productoDb.setDescription(producto.getDescription());
+			}
+			if (producto.getDescription() != null) {
+				productoDb.setPrice(producto.getPrice());
+			}
+			
 			productoOPtional = this.guardar(productoDb);
 		}
 		return Optional.ofNullable(productoOPtional);
